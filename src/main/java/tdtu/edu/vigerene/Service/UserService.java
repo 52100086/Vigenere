@@ -60,12 +60,12 @@ public class UserService {
         if (key.length() >= str.length()) {
             return key.substring(0, str.length());
         }
-        int real_len = countDigits(str);
+        int digit_len = countDigits(str);
 //        Neu do dai cua khoa be hon ban ro thi ta se them vao khoa cac ky tu cua ban ro cho den khi do dai khoa
 //        bang voi ban ro (neu ban ro co cac ky tu dac biet hoac so thi khong them vao khoa)
         StringBuilder newKey = new StringBuilder(key);
         for (int i = 0; i < str.length(); i++) {
-            if (newKey.length() == real_len) {
+            if (newKey.length() == str.length() - digit_len) {
                 break;
             }
 
@@ -97,7 +97,7 @@ public class UserService {
                 encryptedString += strChar;
                 continue;
             }
-            char keyChar = newKey.charAt(i_key);
+            char keyChar = Character.toLowerCase(newKey.charAt(i_key));
             if (Character.isUpperCase(strChar)) {
                 //Ma hoa ky tu in hoa
                 int encryptedChar = (strChar + keyChar - 2 * 'A') % 26 + 'A';
@@ -130,7 +130,7 @@ public class UserService {
                 decryptedString += strChar;
                 continue;
             }
-            char keyChar = key.charAt(i_key);
+            char keyChar =  Character.toLowerCase(key.charAt(i_key));
 
             if (Character.isUpperCase(strChar)) {
                 //Giai ma ky tu in hoa va them ky tu vua giai ma vao key
