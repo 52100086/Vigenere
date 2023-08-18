@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigenere Cypher</title>
+  <link rel="stylesheet" href="/css/index.css">
+
+</head>
+<body>
+
+<div id="header">
+  <div class="wrapper">
+    <div class="nav-icon">
+      <span class="title">Password Encryptor</span>
+    </div>
+    <div class = "user">Hello <span th:text = "${user.getUsername()}"></span></div>
+    <a href = "/login" class="language"><i class="fa-solid fa-globe" style="color: #fff;"></i>Sign out</a>
+  </div>
+</div>
+
+<div id = "container">
+
+  <form class = "form" action="/index" method = "POST" >
+    <div class="wrapper">
+      <div class="input">
+        <input autocomplete = "off" type = "text" class = "text" name="plaintext" id="plaintext" title = "plaintext" placeholder="Your Password" ></input>
+      </div>
+
+
+      <div class="container_center">
+        <div class="center">
+          <button class="btn" type = "submit">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>ENCRYPT</span>
+          </button>
+          <input class = "key" id = "key" placeholder= "KEY" name = "key" th:value = "${user.getVigenerekey()}">
+        </div>
+      </div>
+
+      <div class="input">
+        <input type = "text" class = "text" name="cypher" id="cypher" title = "cypher" placeholder="" th:value = "${user.getPassword()}"></input>
+      </div>
+    </div>
+  </form>
+
+  <div class="wrapper_2">
+    <div class="input">
+      <input autocomplete = "off" type = "text" class = "text" name="encrypted" id="encrypted" title = "encrypted" placeholder="Encrypted Password"></input>
+    </div>
+
+
+    <div class="container_center">
+      <div class="center">
+        <button class="btn btn-decrypt">
+          <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+            <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+            <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+          </svg>
+          <span>DECRYPT</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="input">
+      <input type = "text" class = "text" name="decrypted" id="decrypted" title = "decrypted" placeholder=""></input>
+    </div>
+
+  </div>
+</div>
+
+<script src = "/js/script.js" ></script>
+</body>
+</html>
