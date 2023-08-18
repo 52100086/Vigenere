@@ -10,7 +10,7 @@ function decryptVigenere(str, key) {
             continue;
         }
 
-        let keyChar = key.charAt(i_key);
+        let keyChar = (key.charAt(i_key)).toLowerCase();
 
         if (strChar === strChar.toUpperCase()) {
             let decryptedChar = (strChar.charCodeAt(0) - keyChar.charCodeAt(0) + 26) % 26 + 65;
